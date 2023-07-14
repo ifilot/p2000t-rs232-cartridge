@@ -9,7 +9,7 @@ ROOT = os.path.dirname(__file__)
 
 def main():
     # open standard BASIC rom
-    f = open(os.path.join(ROOT, 'BASICROM.bin'), 'rb')
+    f = open(os.path.join(ROOT, 'BASICROM.BIN'), 'rb')
     rom = bytearray(f.read())
     f.close()
     

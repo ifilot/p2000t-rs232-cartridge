@@ -1,5 +1,9 @@
 # P2000T RS232 CARTRIDGE
 
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/ifilot/p2000t-rs232-cartridge?label=version)
+[![Build](https://github.com/ifilot/p2000t-rs232-cartridge/actions/workflows/build.yml/badge.svg)](https://github.com/ifilot/p2000t-rs232-cartridge/actions/workflows/build.yml)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 ## Purpose
 
 It is possible to transfer `.CAS` files to the P2000T over the RS232 interface
