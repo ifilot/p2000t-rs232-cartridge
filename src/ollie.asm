@@ -10,7 +10,20 @@ ProgramLength:     EQU    $9f34 ; word
     org $4ec7
 
 start:
+    ld hl,.line1
+    ld de,$5000+20*$50
+    call printstring
+    ld hl,.line2
+    ld de,$5000+21*$50
+    call printstring
+    ld hl,.line3
+    ld de,$5000+22*$50
+    call printstring
     jp read_program
+
+.line1: DB "P2000T IS IN LISTENING MODE",255
+.line2: DB "COPY FILE OVER RS232",255
+.line3: DB "BAUD=9600, PARITY=N, DATA=8, STOP=1",255
 
 ; reads a byte from the serial port (9600 baud) and returns in A
 read_byte:
@@ -109,3 +122,19 @@ read_block_loop:
 
     ei                      ; FB - enable interrupts
     ret                     ; C9
+
+;-------------------------------------------------------------------------------
+; print string to screen
+; input: hl - string pointer
+;        de - screen address
+; output: de - exit video address
+; uses: a
+;-------------------------------------------------------------------------------
+printstring:
+    ld a,(hl)
+    cp 255
+    ret z
+    ld (de),a
+    inc de
+    inc hl
+    jp printstring
