@@ -43,6 +43,12 @@ To put the P2000T in 'listening' mode, run
 ?USR1(0)
 ```
 
+After copying the `.cas` file, your P2000T should beep and you can choose
+to either immediately run the program via `RUN` or save it to a cassette
+using `CSAVE`.
+
+![P2000T BASIC instructions](img/p2000t-rs232-cartridge.png)
+
 ### PC (Windows)
 
 Insert the USB to RS232 device and open a `Command Prompt` Window. Check COM
@@ -57,6 +63,8 @@ Next, copy the CAS file using e.g.
 ```bat
 copy data.cas \\.\com5
 ```
+
+![Windows Command Prompt](img/windows-prompt.png)
 
 ## Compilation
 
