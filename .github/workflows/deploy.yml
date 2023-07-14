@@ -1,4 +1,4 @@
-name: deploy
+name: Create Release
 
 on:
   push:
@@ -9,6 +9,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    permissions: write-all
 
     steps:
     - uses: actions/checkout@v3
