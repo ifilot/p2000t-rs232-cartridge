@@ -62,7 +62,7 @@ transferable to other Linux versions.
 1. Ensure the right packages are installed:
 
 ```bash
-sudo apt install python3 z80asm make
+sudo apt install python3 python3-numpy z80asm make
 ```
 
 2. Clone the repository
