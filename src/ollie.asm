@@ -1,11 +1,16 @@
-
-; 9600 baud!!!
-
+;-------------------------------------------------------------------------------
+; This code is largely based on the source code as developed by
+; dionoid(https://github.com/dionoid) as found via the link below:
+; https://github.com/p2000t/software/blob/master/utilities/pc2p2000t/pc2p2000t.z80.asm
+;-------------------------------------------------------------------------------
 BasicProgStart:    EQU    $6547
 ProgramBlocks:     EQU    $9f4f ; byte
 ProgramLength:     EQU    $9f34 ; word
 
-    org $4f00
+    org $4ec7
+
+start:
+    jp read_program
 
 ; reads a byte from the serial port (9600 baud) and returns in A
 read_byte:
@@ -50,7 +55,7 @@ delay_bit:
     pop bc                  ; C1 [10]
     ret                     ; C9 [10]
 
-read_program:               ; starts at $9E1D
+read_program:               ; start the program
     di                      ; F3 - disable interrupts
 
 read_header:                ; read 256-byte header into $9f00 - $9fff

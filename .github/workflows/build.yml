@@ -1,0 +1,24 @@
+name: build
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install dependencies
+      run: sudo apt install -y python3 z80asm make
+    - name: Run Makefile
+      run: make
+    - name: Upload
+        uses: actions/upload-artifact@v1
+        with:
+          name: BASIC-MODIFIED.bin
+          path: src/BASIC-MODIFIED.bin

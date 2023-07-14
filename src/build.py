@@ -4,19 +4,12 @@ import numpy as np
 import os
 import subprocess
 
-# set the path to the assembler
-tniasm = os.path.join('d:/', 'tniasm', 'tniasm.exe')
-
 # set root path
 ROOT = os.path.dirname(__file__)
 
 def main():
-    # compile assembly
-    #compile_asm(os.path.join(ROOT, 'stan.asm')) 
-    compile_asm(os.path.join(ROOT, 'ollie.asm'))
-
     # open standard BASIC rom
-    f = open('BASICROM.bin', 'rb')
+    f = open(os.path.join(ROOT, 'BASICROM.bin'), 'rb')
     rom = bytearray(f.read())
     f.close()
     
@@ -34,25 +27,19 @@ def main():
     # verify whether checksum passes and we are dealing with the
     # BASIC ROM v1.1
     if rom[0x0003] == checksum & 0xFF and rom[0x0004] == (checksum >> 8):
-        print('Checksum passed')
+        print('BASIC ROM v1.1 checksum passed')
     
-    # insert new instructions at $4EE0 in memory / $3EE0 on ROM chip
+    # insert new instructions at $4EC7 in memory / $3EE0 on ROM chip
     f = open(os.path.join(ROOT, 'ollie.bin'), 'rb')
     ollie = bytearray(f.read())
     f.close()
-    rom[0x3F00:0x3F00+len(ollie)] = ollie
-    print("Inserting ollie code; using %i / %i bytes of free space" % 
-          (len(ollie),0x4000-0x3F00))
+    rom[0x3EC7:0x3EC7+len(ollie)] = ollie
+    print("Inserting code; using %i / %i bytes of free space" % 
+          (len(ollie),0x4000-0x3EC7))
     
-    f = open('BASIC-MODIFIED.bin', 'wb')
+    f = open(os.path.join(ROOT, 'BASIC-MODIFIED.bin'), 'wb')
     f.write(rom)
     f.close()
-    
-def compile_asm(filename):
-    print('Compiling: %s' % filename)
-    output = filename.replace('.asm','.bin')
-    out = subprocess.check_output([tniasm, filename, output], cwd=ROOT)
-    print('\n'.join(out.decode().split('\r\n')))
     
 if __name__ == '__main__':
     main()
