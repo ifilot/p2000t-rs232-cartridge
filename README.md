@@ -21,11 +21,11 @@ After booting the P2000T with the modified BASIC-NL image, run
 
 ```basic
 10 CLEAR 50,&H9DFF
-20 DEF USR1=&H4EC7
+20 DEF USR1=&H4EEE
 ```
 
 > **Note**: Use `&H9DFF` in the above instructions if your P2000T has 16kb of memory. 
-> If your P2000T has 32kb or 48kb of memory, use `&HBDFF` or `&HDDFF`, respectively.
+> If your P2000T has 32kb or 48kb of memory, use `&HDDFF` or `&HFDFF`, respectively.
 > Alternatively, you can also use the following one-liner to let the P2000T
 > figure it out for you: `10 CLEAR 50,&H9DFF+256*32*(PEEK(&H605C)+PEEK(&H605C)=1))`.
 
