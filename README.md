@@ -13,6 +13,13 @@ the source code to produce an all-in-one cartridge image that has the required
 source code already inserted at the end of the standard BASIC-NL cartridge
 allowing the user to only write two lines of BASIC code to start the program.
 
+> **Warning**: This adaptation of the BASIC cartridge is based on version 1.1. 
+> I chose this version because it provides sufficient free space for the 
+> necessary modifications. However, it is important to note that the latest 
+> version of the BASIC cartridge is labeled as `1.1A2`. This newer version 
+> potentially includes some changes that certain programs rely on, 
+> making them incompatible with this particular cartridge.
+
 ## Usage
 
 ### P2000T
